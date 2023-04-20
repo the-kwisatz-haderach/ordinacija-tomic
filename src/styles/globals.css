@@ -1,10 +1,5 @@
 html,
 body,
-main,
-div#__next {
-  height: 100%;
-}
-
 main {
-  background-color: #f2f2f2;
+  height: 100%;
 }

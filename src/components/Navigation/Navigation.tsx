@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import NextLink from 'next/link'
 import Image from 'next/image'
 import {
   Box,
@@ -24,7 +23,7 @@ import {
 interface Props {
   menuItems: Array<{
     label: string
-    section: string
+    sectionId: string
   }>
   logoSrc?: string
 }
@@ -41,7 +40,7 @@ export default function Navigation({
         zIndex={100}
         boxShadow="lg"
         position="sticky"
-        top={-1}
+        top={0}
         width="100%"
         backgroundColor="white"
         borderBottomStyle="solid"
@@ -57,8 +56,14 @@ export default function Navigation({
           height="100%"
           px={4}
         >
-          <Link as={NextLink} href="/">
-            {logoSrc && <Image src={logoSrc} alt="logo" fill />}
+          <Link
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+          >
+            {logoSrc && (
+              <Image src={logoSrc} alt="logo" width={75} height={50} />
+            )}
           </Link>
           <HStack
             alignItems="center"
@@ -66,13 +71,17 @@ export default function Navigation({
             display={{ base: 'none', md: 'flex' }}
           >
             {menuItems.map((menuItem) => (
-              <Link
-                as={NextLink}
-                key={menuItem.section}
-                href={`#${menuItem.section}`}
+              <Button
+                key={menuItem.sectionId}
+                variant="link"
+                onClick={() => {
+                  document
+                    .getElementById(menuItem.sectionId)
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }}
               >
                 {menuItem.label}
-              </Link>
+              </Button>
             ))}
           </HStack>
           <IconButton
@@ -93,9 +102,17 @@ export default function Navigation({
             <VStack as="nav" spacing={4} divider={<Divider />}>
               {menuItems.map((menuItem, i) => (
                 <Box width="100%" textAlign="center" key={i} height="100%">
-                  <Link as={NextLink} href={`#${menuItem.section}`}>
+                  <Button
+                    key={menuItem.sectionId}
+                    variant="link"
+                    onClick={() => {
+                      document
+                        .getElementById(menuItem.sectionId)
+                        ?.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                  >
                     {menuItem.label}
-                  </Link>
+                  </Button>
                 </Box>
               ))}
             </VStack>
