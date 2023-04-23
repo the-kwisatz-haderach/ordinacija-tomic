@@ -47,14 +47,13 @@ const services: Array<{
   },
   {
     title: 'EKG',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis perferendis eaque assumenda quidem repellendus quam quasi odit. Assumenda, dolores.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     imageSrc: 'https://picsum.photos/200/300',
   },
   {
     title: 'EKG',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis perferendis eaque assumenda quidem repellendus quam quasi odit. Assumenda, dolores.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis perferendis eaque assumenda quidem repellendus.',
     imageSrc: 'https://picsum.photos/200/300',
   },
 ]
@@ -62,12 +61,12 @@ const services: Array<{
 export default function Services({}: Props) {
   return (
     <Container maxW="container.xl" py={8}>
-      <Heading size="3xl" my={10}>
+      <Heading size="2xl" my={10}>
         Our services
       </Heading>
       <SimpleGrid minChildWidth={['200px', '350px', '450px']} spacing={6}>
-        {services.map((service) => (
-          <GridItem key={service.title}>
+        {services.map((service, i) => (
+          <GridItem key={i}>
             <Service {...service} />
           </GridItem>
         ))}
