@@ -60,7 +60,7 @@ const services: Array<{
 
 export default function Services({}: Props) {
   return (
-    <Container maxW="container.xl" py={8}>
+    <Container maxW="container.xl">
       <Heading size="2xl" my={10}>
         Our services
       </Heading>

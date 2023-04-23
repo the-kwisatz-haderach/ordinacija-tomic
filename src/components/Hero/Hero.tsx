@@ -8,7 +8,7 @@ type Props = {}
 
 export default function Hero({}: Props) {
   return (
-    <Container maxW={2000} p={0}>
+    <Container maxW={2000} p={0} mb={-16}>
       <Box
         height={480}
         width="100%"
@@ -23,7 +23,7 @@ export default function Hero({}: Props) {
           width: '100%',
           height: '100%',
           zIndex: 1,
-          bgImage: 'linear-gradient(to top, #b31a1a69, transparent)',
+          bgImage: 'linear-gradient(to top, #b31a1a4a, transparent)',
         }}
       >
         <Heading
@@ -48,7 +48,7 @@ export default function Hero({}: Props) {
           src="https://fastly.picsum.photos/id/838/2000/480.jpg?hmac=iPx8BAOOmy3A8n-b_UeNwJ0RMnBfIlT2r7innUdLjaY"
         />
       </Box>
-      <BusinessDetails zIndex={2} position="relative" bottom={10} />
+      <BusinessDetails zIndex={2} position="relative" bottom={14} />
     </Container>
   )
 }
