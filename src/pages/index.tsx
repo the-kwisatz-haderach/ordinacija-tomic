@@ -8,7 +8,7 @@ import Contact from '@components/Contact/Contact'
 import Services from '@components/Services/Services'
 import About from '@components/About/About'
 import Section from '@components/Section/Section'
-import { BoxProps } from '@chakra-ui/react'
+import { BoxProps, ButtonProps } from '@chakra-ui/react'
 
 const metaTitle = 'Ordinacija Tomić'
 const metaDescription = ''
@@ -18,7 +18,8 @@ const sections: Array<
     label: string
     sectionId: string
     Renderer: React.FC
-  } & BoxProps
+  } & BoxProps &
+    Pick<ButtonProps, 'variant'>
 > = [
   {
     label: 'Services',
@@ -44,6 +45,7 @@ const sections: Array<
     label: 'Contact',
     sectionId: 'contact',
     Renderer: Contact,
+    variant: 'solid',
   },
 ]
 

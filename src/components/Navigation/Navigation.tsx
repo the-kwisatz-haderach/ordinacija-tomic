@@ -20,6 +20,7 @@ import {
   VStack,
   Text,
   Flex,
+  ButtonProps,
 } from '@chakra-ui/react'
 import { PhoneIcon } from '@chakra-ui/icons'
 import { EmailIcon } from '@chakra-ui/icons'
@@ -29,6 +30,7 @@ interface Props {
   menuItems: Array<{
     label: string
     sectionId: string
+    variant?: ButtonProps['variant']
   }>
   logoSrc?: string
 }
@@ -127,7 +129,8 @@ export default function Navigation({
             {menuItems.map((menuItem) => (
               <Button
                 key={menuItem.sectionId}
-                variant="link"
+                variant={menuItem.variant || 'link'}
+                colorScheme="red"
                 onClick={() => {
                   document
                     .getElementById(menuItem.sectionId)

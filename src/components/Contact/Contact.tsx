@@ -33,25 +33,33 @@ export default function Contact({}: Props) {
           <SimpleGrid columns={2} spacing={4}>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon w="90px" ml={2} children="Ime" />
+                <InputLeftAddon w="90px" ml={2}>
+                  Ime
+                </InputLeftAddon>
                 <Input required type="text" autoComplete="given-name" />
               </InputGroup>
             </GridItem>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon ml={2} children={<EmailIcon />} />
+                <InputLeftAddon ml={2}>
+                  <EmailIcon />
+                </InputLeftAddon>
                 <Input type="email" autoComplete="email" placeholder="Email" />
               </InputGroup>
             </GridItem>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon w="90px" ml={2} children="Prezime" />
+                <InputLeftAddon w="90px" ml={2}>
+                  Prezime
+                </InputLeftAddon>
                 <Input required type="text" autoComplete="family-name" />
               </InputGroup>
             </GridItem>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon ml={2} children={<PhoneIcon />} />
+                <InputLeftAddon ml={2}>
+                  <PhoneIcon />
+                </InputLeftAddon>
                 <Input type="tel" autoComplete="tel" placeholder="Telefon" />
               </InputGroup>
             </GridItem>
