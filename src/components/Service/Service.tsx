@@ -22,8 +22,10 @@ export default function Service({ title, description, imageSrc }: Props) {
       className="service-container"
       overflow="hidden"
       borderRadius="lg"
-      flexDir={['column', 'column', 'row', 'column', 'row']}
+      height="100%"
+      minH={200}
       borderWidth={1}
+      flexDir={{ base: 'column', lg: 'row' }}
       borderStyle="solid"
       borderColor="gray.200"
       transition="box-shadow 0.5s ease-in-out"
@@ -33,8 +35,9 @@ export default function Service({ title, description, imageSrc }: Props) {
     >
       <Box
         position="relative"
-        minWidth={250}
-        height={250}
+        minWidth={200}
+        width={{ base: '100%', lg: 200 }}
+        height={{ base: 200, lg: '100%' }}
         overflow="hidden"
         sx={{
           '.service-container:hover & > img': {
@@ -52,12 +55,12 @@ export default function Service({ title, description, imageSrc }: Props) {
           }}
         />
       </Box>
-      <VStack spacing={3} alignItems="flex-start" px={8} py={6}>
+      <VStack spacing={3} alignItems="flex-start" px={6} py={5}>
         <Heading as="h3" fontSize="2xl">
           {title}
         </Heading>
         <Divider />
-        <Text>{description}</Text>
+        <Text fontSize="sm">{description}</Text>
         {/* <Button alignSelf="flex-end">Get in touch</Button> */}
       </VStack>
     </Flex>

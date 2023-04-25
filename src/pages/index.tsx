@@ -30,6 +30,8 @@ const sections: Array<
     label: 'About',
     sectionId: 'about',
     Renderer: About,
+    borderTop: '1px solid #dcdcdc',
+    borderBottom: '1px solid #dcdcdc',
     bg: 'gray.100',
     py: {
       lg: 16,

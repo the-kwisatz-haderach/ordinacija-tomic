@@ -27,7 +27,7 @@ export default function BusinessDetails({ ...flexProps }: Props) {
   return (
     <Flex justifyContent="center" w="100%" {...flexProps}>
       <Stack
-        direction={['column', 'column', 'row']}
+        direction={['column', 'row']}
         spacing={0}
         borderRadius={8}
         overflow="hidden"

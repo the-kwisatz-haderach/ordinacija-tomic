@@ -64,7 +64,7 @@ export default function Services({}: Props) {
       <Heading size="2xl" my={10}>
         Our services
       </Heading>
-      <SimpleGrid minChildWidth={['200px', '350px', '450px']} spacing={6}>
+      <SimpleGrid columns={[1, 2, 3, 2]} spacing={4}>
         {services.map((service, i) => (
           <GridItem key={i}>
             <Service {...service} />

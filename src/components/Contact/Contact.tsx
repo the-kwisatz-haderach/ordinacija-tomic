@@ -28,9 +28,9 @@ export default function Contact({}: Props) {
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam animi
         accusamus beatae ab asperiores.
       </Text>
-      <Box p={10} borderRadius={20}>
+      <Box mt={[6, 10]} borderRadius={20}>
         <Flex as="form" flexDir="column">
-          <SimpleGrid columns={2} spacing={4}>
+          <SimpleGrid columns={[1, 1, 2]} spacing={4}>
             <GridItem>
               <InputGroup>
                 <InputLeftAddon w="90px" ml={2}>
@@ -39,7 +39,7 @@ export default function Contact({}: Props) {
                 <Input required type="text" autoComplete="given-name" />
               </InputGroup>
             </GridItem>
-            <GridItem>
+            <GridItem order={[1, 1, 'unset']}>
               <InputGroup>
                 <InputLeftAddon ml={2}>
                   <EmailIcon />
