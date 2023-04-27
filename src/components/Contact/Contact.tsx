@@ -10,16 +10,26 @@ import {
   InputLeftAddon,
   InputLeftElement,
   SimpleGrid,
+  Tag,
   Text,
   useToast,
 } from '@chakra-ui/react'
-import React, { useCallback } from 'react'
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { PhoneIcon } from '@chakra-ui/icons'
 import { EmailIcon } from '@chakra-ui/icons'
+import { AttachmentIcon } from '@chakra-ui/icons'
 
 type Props = {}
 
 export default function Contact({}: Props) {
+  const fileInput = useRef<HTMLInputElement>(null)
+  const [files, setFiles] = useState<string[]>([])
   const toast = useToast()
   const onSubmit = useCallback(
     (e: any) => {
@@ -66,6 +76,22 @@ export default function Contact({}: Props) {
     },
     [toast]
   )
+
+  useEffect(() => {
+    const listener = (e: any) => {
+      setFiles([...(e?.target?.files || [])].map((file: any) => file.name))
+    }
+    if (fileInput?.current) {
+      document.addEventListener('change', listener)
+    }
+    return () => {
+      document.removeEventListener('change', listener)
+    }
+  }, [])
+
+  const handleFileUpload = useCallback(() => {
+    fileInput?.current?.click?.()
+  }, [])
 
   return (
     <Container maxW="800px" px={{ base: 6, lg: 0 }} textAlign="center">
@@ -139,24 +165,36 @@ export default function Contact({}: Props) {
                 />
               </InputGroup>
             </GridItem>
-            <GridItem>
-              <input
-                type="file"
-                name="file"
-                accept="image/png, image/jpeg"
-                multiple
-              />
+            <GridItem order={4} colSpan={[1, 2]}>
+              <Flex mx={2} gap={[2, 8]} justifyContent="space-between">
+                <input
+                  ref={fileInput}
+                  style={{ display: 'none' }}
+                  type="file"
+                  name="file"
+                  accept="image/png, image/jpeg"
+                  multiple
+                />
+                <Button
+                  leftIcon={<AttachmentIcon />}
+                  colorScheme="blackAlpha"
+                  onClick={handleFileUpload}
+                >
+                  Upload files
+                </Button>
+                <Button type="submit" colorScheme="red">
+                  Submit
+                </Button>
+              </Flex>
             </GridItem>
           </SimpleGrid>
-          <Button
-            type="submit"
-            size="lg"
-            colorScheme="red"
-            alignSelf="flex-end"
-            my={4}
-          >
-            Submit
-          </Button>
+          <Flex m={2} columnGap={4} alignItems="center" flexWrap="wrap">
+            {files.map((file) => (
+              <Text fontSize="sm" key={file}>
+                {file}
+              </Text>
+            ))}
+          </Flex>
         </Flex>
       </Box>
     </Container>
