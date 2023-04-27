@@ -9,27 +9,29 @@ import Services from '@components/Services/Services'
 import About from '@components/About/About'
 import Section from '@components/Section/Section'
 import { BoxProps, ButtonProps } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
+import { useTranslations } from 'next-intl'
 
-const metaTitle = 'Ordinacija Tomić'
-const metaDescription = ''
+type Section = {
+  label: string
+  sectionId: string
+} & BoxProps &
+  Pick<ButtonProps, 'variant'>
 
-const sections: Array<
-  {
-    label: string
-    sectionId: string
-    Renderer: React.FC
-  } & BoxProps &
-    Pick<ButtonProps, 'variant'>
-> = [
+const sectionRenderers: Record<string, React.FC> = {
+  services: Services,
+  about: About,
+  contact: Contact,
+}
+
+const sections: Section[] = [
   {
     label: 'Services',
     sectionId: 'services',
-    Renderer: Services,
   },
   {
     label: 'About',
     sectionId: 'about',
-    Renderer: About,
     borderTop: '1px solid #dcdcdc',
     borderBottom: '1px solid #dcdcdc',
     bg: 'gray.100',
@@ -46,17 +48,21 @@ const sections: Array<
   {
     label: 'Contact',
     sectionId: 'contact',
-    Renderer: Contact,
     variant: 'solid',
   },
 ]
 
-export default function Home() {
+type Props = {
+  sections: Section[]
+}
+
+export default function Home({ sections }: Props) {
+  const t = useTranslations('Home')
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
+        <title>{t('meta_title')}</title>
+        <meta name="description" content={t('meta_description')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -68,13 +74,30 @@ export default function Home() {
         justifyContent="space-between"
       >
         <Hero />
-        {sections.map(({ sectionId, label, Renderer, ...props }) => (
-          <Section aria-label={label} key={sectionId} id={sectionId} {...props}>
-            <Renderer />
-          </Section>
-        ))}
+        {sections.map(({ sectionId, label, ...props }) => {
+          const Renderer = sectionRenderers[sectionId]
+          return (
+            <Section
+              aria-label={label}
+              key={sectionId}
+              id={sectionId}
+              {...props}
+            >
+              <Renderer />
+            </Section>
+          )
+        })}
         <Footer />
       </Box>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+  return {
+    props: {
+      sections,
+      messages: (await import(`../../translations/${ctx.locale}.json`)).default,
+    },
+  }
 }
