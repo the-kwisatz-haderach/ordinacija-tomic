@@ -21,14 +21,14 @@ export default function Service({ title, description, imageSrc }: Props) {
     <Flex
       className="service-container"
       overflow="hidden"
-      borderRadius="lg"
+      borderRadius="sm"
       height="100%"
       minH={200}
       borderWidth={1}
       flexDir={{ base: 'column', lg: 'row' }}
       borderStyle="solid"
       borderColor="gray.200"
-      transition="box-shadow 0.5s ease-in-out"
+      transition="box-shadow 0.2s ease-in-out"
       _hover={{
         boxShadow: 'xl',
       }}
@@ -51,7 +51,7 @@ export default function Service({ title, description, imageSrc }: Props) {
           fill
           style={{
             objectFit: 'cover',
-            transition: 'transform 0.4s ease-in-out',
+            transition: 'transform 0.2s ease-in-out',
           }}
         />
       </Box>

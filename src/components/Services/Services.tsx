@@ -22,7 +22,7 @@ const services: Array<{
     imageSrc: 'https://picsum.photos/200/300',
   },
   {
-    title: 'EKG',
+    title: 'Ultrazvuk ',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis perferendis eaque assumenda quidem repellendus quam quasi odit. Assumenda, dolores.',
     imageSrc: 'https://picsum.photos/200/300',

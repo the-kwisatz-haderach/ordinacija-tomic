@@ -7,6 +7,7 @@ import {
   StackProps,
   Text,
 } from '@chakra-ui/react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import React, { PropsWithChildren } from 'react'
 
@@ -24,6 +25,7 @@ const DetailBox: React.FC<DetailBoxProps> = ({ children, title, ...props }) => (
 )
 
 export default function BusinessDetails({ ...flexProps }: Props) {
+  const t = useTranslations('Home')
   return (
     <Flex justifyContent="center" w="100%" {...flexProps}>
       <Stack
@@ -32,10 +34,10 @@ export default function BusinessDetails({ ...flexProps }: Props) {
         borderRadius={8}
         overflow="hidden"
       >
-        <DetailBox bg="red.400" title="Contact us">
+        <DetailBox bg="red.400" title={t('contact_us')}>
           <Text>Lorem ipsum dolor sit amet.</Text>
         </DetailBox>
-        <DetailBox bg="red.600" title="Find us">
+        <DetailBox bg="red.600" title={t('find_us')}>
           <Text>Lorem ipsum dolor sit amet.</Text>
           <Button
             borderRadius={6}
@@ -44,10 +46,10 @@ export default function BusinessDetails({ ...flexProps }: Props) {
             as={Link}
             variant="outline"
           >
-            View on map
+            {t('view_on_map')}
           </Button>
         </DetailBox>
-        <DetailBox bg="red.700" title="Opening hours">
+        <DetailBox bg="red.700" title={t('opening_hours')}>
           <Text>Lorem ipsum dolor sit amet.</Text>
         </DetailBox>
       </Stack>

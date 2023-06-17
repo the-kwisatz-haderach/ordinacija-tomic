@@ -92,7 +92,7 @@ export default function Navigation({
           <IconButton
             color="white"
             backgroundColor="brand.100"
-            icon={<HamburgerIcon />}
+            icon={<HamburgerIcon fontSize="xl" />}
             display={{ md: 'none' }}
             onClick={onOpen}
             aria-label="main menu"
@@ -113,7 +113,8 @@ export default function Navigation({
                     onClick={() => {
                       document
                         .getElementById(menuItem.sectionId)
-                        ?.scrollIntoView({ behavior: 'smooth' })
+                        ?.scrollIntoView()
+                      onClose()
                     }}
                   >
                     {menuItem.label}

@@ -24,10 +24,12 @@ import React, {
 import { PhoneIcon } from '@chakra-ui/icons'
 import { EmailIcon } from '@chakra-ui/icons'
 import { AttachmentIcon } from '@chakra-ui/icons'
+import { useTranslations } from 'next-intl'
 
 type Props = {}
 
 export default function Contact({}: Props) {
+  const t = useTranslations('Home')
   const fileInput = useRef<HTMLInputElement>(null)
   const [files, setFiles] = useState<string[]>([])
   const toast = useToast()
@@ -93,6 +95,10 @@ export default function Contact({}: Props) {
     fileInput?.current?.click?.()
   }, [])
 
+  const focusSibling = useCallback((e: any) => {
+    e.target.nextElementSibling.focus()
+  }, [])
+
   return (
     <Container maxW="800px" px={{ base: 6, lg: 0 }} textAlign="center">
       <Heading fontSize="4xl" my={4}>
@@ -114,8 +120,8 @@ export default function Contact({}: Props) {
           <SimpleGrid columns={[1, 1, 2]} spacing={4}>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon w="90px" ml={2}>
-                  Ime
+                <InputLeftAddon w="90px" ml={2} onClick={focusSibling}>
+                  {t('firstname')}
                 </InputLeftAddon>
                 <Input
                   required
@@ -127,21 +133,25 @@ export default function Contact({}: Props) {
             </GridItem>
             <GridItem order={[1, 1, 'unset']}>
               <InputGroup>
-                <InputLeftAddon ml={2}>
-                  <EmailIcon />
+                <InputLeftAddon ml={2} onClick={focusSibling}>
+                  <EmailIcon
+                    style={{
+                      pointerEvents: 'none',
+                    }}
+                  />
                 </InputLeftAddon>
                 <Input
                   type="email"
                   name="email"
                   autoComplete="email"
-                  placeholder="Email"
+                  placeholder={t('email')}
                 />
               </InputGroup>
             </GridItem>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon w="90px" ml={2}>
-                  Prezime
+                <InputLeftAddon w="90px" ml={2} onClick={focusSibling}>
+                  {t('lastname')}
                 </InputLeftAddon>
                 <Input
                   required
@@ -153,15 +163,19 @@ export default function Contact({}: Props) {
             </GridItem>
             <GridItem>
               <InputGroup>
-                <InputLeftAddon ml={2}>
-                  <PhoneIcon />
+                <InputLeftAddon ml={2} onClick={focusSibling}>
+                  <PhoneIcon
+                    style={{
+                      pointerEvents: 'none',
+                    }}
+                  />
                 </InputLeftAddon>
                 <Input
                   type="tel"
                   name="phone"
                   autoComplete="tel"
                   pattern="\+?([0-9]|\s)+"
-                  placeholder="Telefon"
+                  placeholder={t('phone')}
                 />
               </InputGroup>
             </GridItem>
@@ -180,10 +194,10 @@ export default function Contact({}: Props) {
                   colorScheme="blackAlpha"
                   onClick={handleFileUpload}
                 >
-                  Upload files
+                  {t('upload_files')}
                 </Button>
                 <Button type="submit" colorScheme="red">
-                  Submit
+                  {t('submit')}
                 </Button>
               </Flex>
             </GridItem>
