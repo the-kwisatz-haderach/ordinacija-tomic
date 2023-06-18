@@ -15,8 +15,7 @@ import { useTranslations } from 'next-intl'
 type Section = {
   label: string
   sectionId: string
-} & BoxProps &
-  Pick<ButtonProps, 'variant'>
+} & BoxProps & { accent?: boolean }
 
 const sectionRenderers: Record<string, React.FC> = {
   services: Services,
@@ -48,7 +47,7 @@ const sections: Section[] = [
   {
     label: 'Contact',
     sectionId: 'contact',
-    variant: 'solid',
+    accent: true,
   },
 ]
 

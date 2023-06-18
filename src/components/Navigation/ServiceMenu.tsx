@@ -12,6 +12,7 @@ export const ServiceMenu = () => {
       width="100%"
       height={30}
       bg="brand.100"
+      borderBottom="1px solid #e5e5e5"
       display={{ base: 'none', sm: 'block' }}
     >
       <Container
@@ -21,7 +22,6 @@ export const ServiceMenu = () => {
         maxW="container.xl"
         height="100%"
         px={4}
-        color="white"
         position="relative"
         bottom="1px"
       >
@@ -34,13 +34,21 @@ export const ServiceMenu = () => {
         <Flex alignItems="center" gap={7} fontSize={{ base: 'xs', md: 'sm' }}>
           <Flex gap={2} alignItems="center">
             <PhoneIcon fontSize="xs" />
-            <Link position="relative" bottom="1px" href="tel:+082141249820">
+            <Link
+              position="relative"
+              bottom="1px"
+              href={`tel:${t('phone_number')}`}
+            >
               {t('phone_number')}
             </Link>
           </Flex>
           <Flex gap={2} alignItems="center">
             <EmailIcon fontSize="xs" />
-            <Link position="relative" bottom="1px" href="mailto:test@test.com">
+            <Link
+              position="relative"
+              bottom="1px"
+              href={`mailto:${t('email_address')}`}
+            >
               {t('email_address')}
             </Link>
           </Flex>

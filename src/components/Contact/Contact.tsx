@@ -21,9 +21,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { PhoneIcon } from '@chakra-ui/icons'
-import { EmailIcon } from '@chakra-ui/icons'
-import { AttachmentIcon } from '@chakra-ui/icons'
+import { PhoneIcon, AttachmentIcon, EmailIcon } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
 
 type Props = {}

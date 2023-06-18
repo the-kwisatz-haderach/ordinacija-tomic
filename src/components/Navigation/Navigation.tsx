@@ -18,7 +18,6 @@ import {
   useDisclosure,
   Container,
   VStack,
-  ButtonProps,
 } from '@chakra-ui/react'
 import { ServiceMenu } from './ServiceMenu'
 
@@ -26,7 +25,7 @@ interface Props {
   menuItems: Array<{
     label: string
     sectionId: string
-    variant?: ButtonProps['variant']
+    accent?: boolean
   }>
   logoSrc?: string
 }
@@ -48,9 +47,10 @@ export default function Navigation({
         width="100%"
         backgroundColor="white"
         borderBottomStyle="solid"
-        borderBottomWidth={2}
+        borderBottomWidth={1}
         borderBottomColor="gray.100"
-        height="70px"
+        py={1}
+        height={{ base: '50px', md: '70px' }}
       >
         <Container
           display="flex"
@@ -58,15 +58,29 @@ export default function Navigation({
           alignItems="center"
           maxW="container.xl"
           height="100%"
-          px={4}
         >
           <Link
+            height="100%"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }}
           >
             {logoSrc && (
-              <Image src={logoSrc} alt="logo" width={75} height={50} />
+              <Box
+                width="80px"
+                overflow="hidden"
+                height="100%"
+                position="relative"
+              >
+                <Image
+                  src={logoSrc}
+                  alt="logo"
+                  fill
+                  style={{
+                    objectFit: 'contain',
+                  }}
+                />
+              </Box>
             )}
           </Link>
           <HStack
@@ -77,8 +91,9 @@ export default function Navigation({
             {menuItems.map((menuItem) => (
               <Button
                 key={menuItem.sectionId}
-                variant={menuItem.variant || 'link'}
-                colorScheme="red"
+                color={menuItem.accent ? undefined : 'black'}
+                colorScheme={menuItem.accent ? 'red' : undefined}
+                variant={menuItem.accent ? 'solid' : 'link'}
                 onClick={() => {
                   document
                     .getElementById(menuItem.sectionId)
@@ -91,7 +106,7 @@ export default function Navigation({
           </HStack>
           <IconButton
             color="white"
-            backgroundColor="brand.100"
+            backgroundColor="red.600"
             icon={<HamburgerIcon fontSize="xl" />}
             display={{ md: 'none' }}
             onClick={onOpen}

@@ -23,7 +23,7 @@ export default function Hero({}: Props) {
           width: '100%',
           height: '100%',
           zIndex: 1,
-          bgImage: 'linear-gradient(to top, #b31a1a4a, transparent)',
+          bgImage: 'linear-gradient(to top, #0000005a, transparent)',
         }}
       >
         <Heading
@@ -48,7 +48,7 @@ export default function Hero({}: Props) {
           src="https://fastly.picsum.photos/id/838/2000/480.jpg?hmac=iPx8BAOOmy3A8n-b_UeNwJ0RMnBfIlT2r7innUdLjaY"
         />
       </Box>
-      <BusinessDetails zIndex={2} position="relative" bottom={14} />
+      <BusinessDetails zIndex={2} position="relative" bottom={20} />
     </Container>
   )
 }
