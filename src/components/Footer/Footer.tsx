@@ -27,8 +27,8 @@ export default function Footer({}: Props) {
     <Box
       as="footer"
       height={['100%', '100%', 350]}
-      backgroundColor="brand.800"
       color="white"
+      bg="brand.900"
     >
       <Container maxW="container.xl" p={[6, 8]} height="100%">
         <SimpleGrid gap={6} columns={[1, 2, 3]}>
@@ -99,7 +99,7 @@ export default function Footer({}: Props) {
           </Center>
         </SimpleGrid>
       </Container>
-      <Flex w="100%" h="40px" bg="brand.900" alignItems="center">
+      <Flex w="100%" h="40px" bg="blackAlpha.900" alignItems="center">
         <Container maxW="container.xl">
           <Text fontSize="sm" ml={2}>
             © Ordinacija Tomić {new Date().getFullYear()}

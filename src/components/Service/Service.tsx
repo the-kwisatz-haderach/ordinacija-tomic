@@ -1,3 +1,4 @@
+import { CheckIcon } from '@chakra-ui/icons'
 import {
   AccordionButton,
   AccordionIcon,
@@ -10,6 +11,7 @@ import {
   Heading,
   Tag,
   TagLabel,
+  TagLeftIcon,
   Text,
   VStack,
 } from '@chakra-ui/react'
@@ -67,6 +69,7 @@ export default function Service({
                     borderRadius="2xl"
                     variant="solid"
                   >
+                    <TagLeftIcon boxSize="12px" as={CheckIcon} />
                     <TagLabel>{tag}</TagLabel>
                   </Tag>
                 ))}

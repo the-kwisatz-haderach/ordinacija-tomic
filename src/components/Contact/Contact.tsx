@@ -100,119 +100,129 @@ export default function Contact({}: Props) {
   }, [])
 
   return (
-    <Container maxW="800px" px={{ base: 6, lg: 0 }} textAlign="center">
-      <Heading fontSize="4xl" my={4}>
-        Stupite u kontakt s nama
-      </Heading>
-      <Text fontSize="lg">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam animi
-        accusamus beatae ab asperiores.
-      </Text>
-      <Box mt={[6, 10]} borderRadius={20}>
-        <Flex
-          as="form"
-          flexDir="column"
-          onSubmit={onSubmit}
-          action="/api/upload"
-          encType="multipart/form-data"
-          method="post"
-        >
-          <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-            <GridItem>
-              <InputGroup>
-                <InputLeftAddon w="90px" ml={2} onClick={focusSibling}>
-                  {t('firstname')}
-                </InputLeftAddon>
-                <Input
-                  required
-                  name="firstname"
-                  type="text"
-                  autoComplete="given-name"
-                />
-              </InputGroup>
-            </GridItem>
-            <GridItem order={[1, 1, 'unset']}>
-              <InputGroup>
-                <InputLeftAddon ml={2} onClick={focusSibling}>
-                  <EmailIcon
-                    style={{
-                      pointerEvents: 'none',
-                    }}
+    <Box>
+      <Container
+        boxShadow="lg"
+        borderRadius={3}
+        maxW="1000px"
+        textAlign="center"
+        bg="white"
+        py={10}
+        px={{ base: 4, md: 10 }}
+      >
+        <Heading fontSize="4xl" my={4}>
+          Stupite u kontakt s nama
+        </Heading>
+        <Text fontSize="lg">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam animi
+          accusamus beatae ab asperiores.
+        </Text>
+        <Box mt={[6, 10]} borderRadius={20}>
+          <Flex
+            as="form"
+            flexDir="column"
+            onSubmit={onSubmit}
+            action="/api/upload"
+            encType="multipart/form-data"
+            method="post"
+          >
+            <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+              <GridItem>
+                <InputGroup>
+                  <InputLeftAddon w="90px" ml={2} onClick={focusSibling}>
+                    {t('firstname')}
+                  </InputLeftAddon>
+                  <Input
+                    required
+                    name="firstname"
+                    type="text"
+                    autoComplete="given-name"
                   />
-                </InputLeftAddon>
-                <Input
-                  type="email"
-                  name="email"
-                  required
-                  autoComplete="email"
-                  placeholder={t('email')}
-                />
-              </InputGroup>
-            </GridItem>
-            <GridItem>
-              <InputGroup>
-                <InputLeftAddon w="90px" ml={2} onClick={focusSibling}>
-                  {t('lastname')}
-                </InputLeftAddon>
-                <Input
-                  required
-                  type="text"
-                  name="lastname"
-                  autoComplete="family-name"
-                />
-              </InputGroup>
-            </GridItem>
-            <GridItem>
-              <InputGroup>
-                <InputLeftAddon ml={2} onClick={focusSibling}>
-                  <PhoneIcon
-                    style={{
-                      pointerEvents: 'none',
-                    }}
+                </InputGroup>
+              </GridItem>
+              <GridItem order={[1, 1, 'unset']}>
+                <InputGroup>
+                  <InputLeftAddon ml={2} onClick={focusSibling}>
+                    <EmailIcon
+                      style={{
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  </InputLeftAddon>
+                  <Input
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    placeholder={t('email')}
                   />
-                </InputLeftAddon>
-                <Input
-                  type="tel"
-                  required
-                  name="phone"
-                  autoComplete="tel"
-                  pattern="\+?([0-9]|\s)+"
-                  placeholder={t('phone')}
-                />
-              </InputGroup>
-            </GridItem>
-            <GridItem order={4} colSpan={[1, 2]}>
-              <Flex mx={2} gap={[2, 8]} justifyContent="space-between">
-                <input
-                  ref={fileInput}
-                  style={{ display: 'none' }}
-                  type="file"
-                  name="file"
-                  accept="image/png, image/jpeg"
-                  multiple
-                />
-                <Button
-                  leftIcon={<AttachmentIcon />}
-                  colorScheme="blackAlpha"
-                  onClick={handleFileUpload}
-                >
-                  {t('upload_files')}
-                </Button>
-                <Button type="submit" colorScheme="red">
-                  {t('submit')}
-                </Button>
-              </Flex>
-            </GridItem>
-          </SimpleGrid>
-          <Flex m={2} columnGap={4} alignItems="center" flexWrap="wrap">
-            {files.map((file) => (
-              <Text fontSize="sm" key={file}>
-                {file}
-              </Text>
-            ))}
+                </InputGroup>
+              </GridItem>
+              <GridItem>
+                <InputGroup>
+                  <InputLeftAddon w="90px" ml={2} onClick={focusSibling}>
+                    {t('lastname')}
+                  </InputLeftAddon>
+                  <Input
+                    required
+                    type="text"
+                    name="lastname"
+                    autoComplete="family-name"
+                  />
+                </InputGroup>
+              </GridItem>
+              <GridItem>
+                <InputGroup>
+                  <InputLeftAddon ml={2} onClick={focusSibling}>
+                    <PhoneIcon
+                      style={{
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  </InputLeftAddon>
+                  <Input
+                    type="tel"
+                    required
+                    name="phone"
+                    autoComplete="tel"
+                    pattern="\+?([0-9]|\s)+"
+                    placeholder={t('phone')}
+                  />
+                </InputGroup>
+              </GridItem>
+              <GridItem order={4} colSpan={[1, 2]}>
+                <Flex mx={2} gap={[2, 8]} justifyContent="space-between">
+                  <input
+                    ref={fileInput}
+                    style={{ display: 'none' }}
+                    type="file"
+                    name="file"
+                    accept="image/png, image/jpeg"
+                    multiple
+                  />
+                  <Button
+                    leftIcon={<AttachmentIcon />}
+                    colorScheme="blackAlpha"
+                    onClick={handleFileUpload}
+                  >
+                    {t('upload_files')}
+                  </Button>
+                  <Button type="submit" colorScheme="red">
+                    {t('submit')}
+                  </Button>
+                </Flex>
+              </GridItem>
+            </SimpleGrid>
+            <Flex m={2} columnGap={4} alignItems="center" flexWrap="wrap">
+              {files.map((file) => (
+                <Text fontSize="sm" key={file}>
+                  {file}
+                </Text>
+              ))}
+            </Flex>
           </Flex>
-        </Flex>
-      </Box>
-    </Container>
+        </Box>
+      </Container>
+    </Box>
   )
 }

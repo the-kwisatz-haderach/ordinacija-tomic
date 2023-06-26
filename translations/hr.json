@@ -10,10 +10,11 @@
     "lastname": "Prezime",
     "email": "Email",
     "phone": "Telefon",
-    "view_on_map": "View on map",
+    "view_on_map": "Get directions",
     "find_us": "Find us",
-    "contact_us": "Contact us",
+    "contact_us": "Naručite se",
     "phone_number": "063 818-020",
-    "email_address": "monika.tomic@gmail.com"
+    "email_address": "monika.tomic@gmail.com",
+    "hero_text": "Dobrodošli u odrinaciju tomic"
   }
 }
