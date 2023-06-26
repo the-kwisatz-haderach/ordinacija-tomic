@@ -1,6 +1,7 @@
+import React from 'react'
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import Image from 'next/image'
-import React from 'react'
+import aboutUsImg from '../../images/hero_1.png'
 
 type Props = {}
 
@@ -23,7 +24,7 @@ export default function About({}: Props) {
         left={{ lg: 20 }}
       >
         <Image
-          src="https://picsum.photos/600/600"
+          src={aboutUsImg}
           alt=""
           fill
           style={{
@@ -49,16 +50,32 @@ export default function About({}: Props) {
           boxShadow="xl"
           spacing={4}
         >
-          <Heading fontSize="4xl">About us</Heading>
-          <Text fontSize="lg">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
-            dolore modi corrupti sunt reiciendis doloremque animi veniam vel
-            enim reprehenderit quod vero laudantium, aperiam ad perferendis
-            exercitationem laboriosam cum molestiae.
+          <Heading fontSize="4xl">O NAMA</Heading>
+          <Text>
+            Ordinacija Tomić je privatna internistička ordinacija s tradicijom
+            dužom od dva desetljeća. Počeli smo s radom 2000. godine na adresi
+            Kranjčevićeva 14 u Širokom Brijegu gdje se nalazimo i danas, a
+            osnivač ordinacije je prim. prof. dr. sc. Monika Tomić.
           </Text>
-          <Text fontSize="lg">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
-            dolore modi corrupti sunt reiciendis doloremque.
+          <Text>
+            Ordinacija TOMIĆ pacijentima pruža širok spektar medicinskih i
+            dijagnostičkih usluga iz oblasti interne medicine. Koncipirana je
+            kao ustanova koja može dijagnostički i terapijski zbrinuti bolesnike
+            iz područja unutarnjih bolesti s naglaskom na zbrinjavanje složenih
+            bolesnika koji uzimaju veliki broj lijekova uz odabir
+            najracionalnije kombinacije lijekova. Osnovni zadatak ORIDINACIJE
+            TOMIĆ je kroz pravodobnu prevenciju, spriječiti razvoj bolesti ili
+            je otkriti u što ranijoj fazi kako bi se izbjegla dugotrajna i
+            iscrpljujuća dijagnostika i liječenje, a sve sa ciljem ozdravljenja
+            i održavanja kvalitete života.
+          </Text>
+          <Text>
+            U ordinaciji TOMIĆ pacijenti će dobiti najbolju moguću liječničku
+            skrb, bez potrebe za dugim čekanjem. Opremljeni smo najmodernijim
+            medicinskim uređajima, a cilj nam je pružiti usluge suvremene
+            medicine koja je zasnovana na dokazima i koje su prilagođene
+            potrebama pacijenata. Etičnost, profesionalnost i vrhunska kvaliteta
+            su ono što nas čini ustanovom od povjerenja već dugi niz godina.
           </Text>
         </Stack>
       </Stack>

@@ -26,6 +26,8 @@ import { useTranslations } from 'next-intl'
 
 type Props = {}
 
+// Fields: Type of service + How contact
+
 export default function Contact({}: Props) {
   const t = useTranslations('Home')
   const fileInput = useRef<HTMLInputElement>(null)
@@ -100,7 +102,7 @@ export default function Contact({}: Props) {
   return (
     <Container maxW="800px" px={{ base: 6, lg: 0 }} textAlign="center">
       <Heading fontSize="4xl" my={4}>
-        Contact us
+        Stupite u kontakt s nama
       </Heading>
       <Text fontSize="lg">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam animi
@@ -141,6 +143,7 @@ export default function Contact({}: Props) {
                 <Input
                   type="email"
                   name="email"
+                  required
                   autoComplete="email"
                   placeholder={t('email')}
                 />
@@ -170,6 +173,7 @@ export default function Contact({}: Props) {
                 </InputLeftAddon>
                 <Input
                   type="tel"
+                  required
                   name="phone"
                   autoComplete="tel"
                   pattern="\+?([0-9]|\s)+"

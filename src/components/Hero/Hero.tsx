@@ -1,32 +1,31 @@
+import React from 'react'
 import { Box, Container } from '@chakra-ui/layout'
 import { Heading } from '@chakra-ui/react'
 import BusinessDetails from '@components/BusinessDetails/BusinessDetails'
 import Image from 'next/image'
-import React from 'react'
+import heroImg from '../../images/hero_1.png'
 
 type Props = {}
 
 export default function Hero({}: Props) {
   return (
-    <Container maxW={2000} p={0} mb={-16}>
+    <Container maxW={2000} p={0}>
       <Box
-        height={480}
+        height={560}
         width="100%"
         pos="relative"
         display="flex"
-        alignItems="center"
-        justifyContent="center"
-        _before={{
-          content: '""',
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 1,
-          bgImage: 'linear-gradient(to top, #0000005a, transparent)',
-        }}
+        // _before={{
+        //   content: '""',
+        //   position: 'absolute',
+        //   inset: 0,
+        //   width: '100%',
+        //   height: '100%',
+        //   zIndex: 1,
+        //   bgImage: 'linear-gradient(to top, #0000005a, transparent)',
+        // }}
       >
-        <Heading
+        {/* <Heading
           maxW={{ md: '80%' }}
           textAlign="center"
           px={4}
@@ -37,18 +36,23 @@ export default function Hero({}: Props) {
           size={['2xl', '4xl']}
         >
           Lorem ipsum, dolor sit amet consectetur.
-        </Heading>
-        <Image
-          alt="hero"
-          fill
-          priority
-          style={{
-            objectFit: 'cover',
-          }}
-          src="https://fastly.picsum.photos/id/838/2000/480.jpg?hmac=iPx8BAOOmy3A8n-b_UeNwJ0RMnBfIlT2r7innUdLjaY"
-        />
+        </Heading> */}
+        <Box pos="relative" width="100%" height="inherit">
+          <Image
+            alt="hero"
+            fill
+            priority
+            style={{
+              objectFit: 'cover',
+            }}
+            src={heroImg}
+          />
+        </Box>
       </Box>
-      <BusinessDetails zIndex={2} position="relative" bottom={20} />
+      <Box w="100%" h={200} bg="brand.900">
+        Test
+      </Box>
+      {/* <BusinessDetails zIndex={2} position="relative" bottom={20} /> */}
     </Container>
   )
 }

@@ -12,7 +12,6 @@ export const ServiceMenu = () => {
       width="100%"
       height={30}
       bg="brand.100"
-      borderBottom="1px solid #e5e5e5"
       display={{ base: 'none', sm: 'block' }}
     >
       <Container

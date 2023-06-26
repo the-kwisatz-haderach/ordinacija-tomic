@@ -26,7 +26,7 @@ export default function Footer({}: Props) {
   return (
     <Box
       as="footer"
-      height={['100%', '100%', 400]}
+      height={['100%', '100%', 350]}
       backgroundColor="brand.800"
       color="white"
     >
@@ -63,7 +63,7 @@ export default function Footer({}: Props) {
               </Flex>
             </Stack>
           </Box>
-          <Box>
+          {/* <Box>
             <Stack spacing={4}>
               <Box>
                 <Heading my={3} as="h5" fontSize="2xl">
@@ -72,8 +72,8 @@ export default function Footer({}: Props) {
                 <Text fontSize="sm" mb={4}>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Quam, illo.
-                </Text>
-                {/* <Button
+                </Text> */}
+          {/* <Button
                   target="_blank"
                   as={NextLink}
                   href={googleMapsLink}
@@ -82,7 +82,7 @@ export default function Footer({}: Props) {
                 >
                   {t('view_on_map')}
                 </Button> */}
-                <iframe
+          {/* <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2899.4827348286744!2d17.589274176626027!3d43.387838671115865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134b3f9acc9f37ab%3A0xa0adb5182564bd69!2sOrdinacija%20Tomi%C4%87!5e0!3m2!1sen!2sse!4v1687031249684!5m2!1sen!2sse"
                   width="100%"
                   height="200"
@@ -90,10 +90,10 @@ export default function Footer({}: Props) {
                   // allowfullscreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                />
-              </Box>
+                /> */}
+          {/* </Box>
             </Stack>
-          </Box>
+          </Box> */}
           <Center height="100%">
             <Image src={logo} width={200} height={200} alt="logo" />
           </Center>
