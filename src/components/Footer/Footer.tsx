@@ -12,7 +12,7 @@ import {
   Button,
 } from '@chakra-ui/react'
 import React from 'react'
-import logo from '@images/tomic_logo.jpeg'
+import logo from '@images/logo-white.svg'
 import Image from 'next/image'
 import { EmailIcon, PhoneIcon, CalendarIcon } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
@@ -28,7 +28,7 @@ export default function Footer({}: Props) {
       as="footer"
       height={['100%', '100%', 350]}
       color="white"
-      bg="brand.900"
+      bg="rgb(43 43 43)"
     >
       <Container maxW="container.xl" p={[6, 8]} height="100%">
         <SimpleGrid gap={6} columns={[1, 2, 3]}>
@@ -94,8 +94,8 @@ export default function Footer({}: Props) {
           {/* </Box>
             </Stack>
           </Box> */}
-          <Center height="100%">
-            <Image src={logo} width={200} height={200} alt="logo" />
+          <Center height={300} overflow="hidden">
+            <Image src={logo} width={300} height={300} alt="logo" />
           </Center>
         </SimpleGrid>
       </Container>

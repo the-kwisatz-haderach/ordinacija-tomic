@@ -4,3 +4,7 @@ main {
   height: 100%;
   color: #373737;
 }
+
+ul {
+  margin-left: 1.5rem;
+}

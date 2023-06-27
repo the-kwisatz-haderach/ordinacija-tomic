@@ -8,33 +8,31 @@ import {
   Button,
   Flex,
   HStack,
-  Heading,
   Tag,
   TagLabel,
   TagLeftIcon,
   Text,
-  VStack,
 } from '@chakra-ui/react'
-import Image from 'next/image'
 import React from 'react'
 
 export type Props = {
+  value: string
   title: string
-  description: string
   Content?: React.FC
-  imageSrc: string
-  alternate?: boolean
   tags?: string[]
 }
 
 export default function Service({
   title,
-  description,
-  imageSrc,
-  alternate = false,
   Content = () => null,
   tags = [],
+  value,
 }: Props) {
+  const handleClickBookingButton = () => {
+    const option: any = document.querySelector(`option[value="${value}"]`)
+    option.parentElement.value = value
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
   return (
     <AccordionItem>
       <h2>
@@ -58,23 +56,26 @@ export default function Service({
           py={4}
         >
           <Flex flexDir="column" w="100%" gap={5} alignItems="flex-start">
-            <Text lineHeight={1.6}>{description}</Text>
             <Content />
             <Flex w="100%" wrap={{ base: 'wrap', md: 'nowrap' }}>
-              <HStack spacing={3} wrap="wrap" w="100%">
+              <Flex gap={2} wrap="wrap" w="100%" alignItems="center">
                 {tags.map((tag) => (
                   <Tag
                     key={tag}
                     size={['md', 'lg']}
-                    borderRadius="2xl"
+                    borderRadius="3xl"
+                    maxH={35}
                     variant="solid"
                   >
                     <TagLeftIcon boxSize="12px" as={CheckIcon} />
                     <TagLabel>{tag}</TagLabel>
                   </Tag>
                 ))}
-              </HStack>
+              </Flex>
               <Button
+                mt={2}
+                w={['100%', 'fit-content']}
+                onClick={handleClickBookingButton}
                 colorScheme="red"
                 justifySelf="flex-end"
                 alignSelf="flex-end"

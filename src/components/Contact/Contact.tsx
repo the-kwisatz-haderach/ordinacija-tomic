@@ -8,25 +8,32 @@ import {
   Input,
   InputGroup,
   InputLeftAddon,
-  InputLeftElement,
+  Radio,
+  RadioGroup,
+  Select,
   SimpleGrid,
+  Stack,
   Tag,
   Text,
   useToast,
 } from '@chakra-ui/react'
-import React, {
-  ChangeEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { PhoneIcon, AttachmentIcon, EmailIcon } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
 
 type Props = {}
 
 // Fields: Type of service + How contact
+
+const serviceOptions = [
+  { value: '1', label: 'Kardiološki pregled' },
+  { value: '2', label: 'Nefrološki pregled' },
+  { value: '3', label: 'Endokrinološki pregled' },
+  { value: '4', label: 'Reumatološki pregled' },
+  { value: '5', label: 'Imunološki pregled' },
+  { value: '6', label: 'Hematološki pregled' },
+  { value: '7', label: 'Ostale usluge' },
+]
 
 export default function Contact({}: Props) {
   const t = useTranslations('Home')
@@ -100,14 +107,12 @@ export default function Contact({}: Props) {
   }, [])
 
   return (
-    <Box>
+    <Box py={10}>
       <Container
-        boxShadow="lg"
         borderRadius={3}
         maxW="1000px"
         textAlign="center"
         bg="white"
-        py={10}
         px={{ base: 4, md: 10 }}
       >
         <Heading fontSize="4xl" my={4}>
@@ -190,7 +195,34 @@ export default function Contact({}: Props) {
                   />
                 </InputGroup>
               </GridItem>
-              <GridItem order={4} colSpan={[1, 2]}>
+              <GridItem pl={2} order={4}>
+                <Stack spacing={3}>
+                  <Select variant="filled" placeholder="Usluge" size="md">
+                    {serviceOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </Select>
+                </Stack>
+              </GridItem>
+              <GridItem
+                order={4}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <RadioGroup defaultValue="telefon">
+                  <Stack spacing={5} direction="row">
+                    <Text fontSize={['sm', 'md']} fontWeight="bold">
+                      Zelim da kontaktiraje da:
+                    </Text>
+                    <Radio value="telefon">Telefon</Radio>
+                    <Radio value="email">Email</Radio>
+                  </Stack>
+                </RadioGroup>
+              </GridItem>
+              <GridItem order={5} colSpan={[1, 2]}>
                 <Flex mx={2} gap={[2, 8]} justifyContent="space-between">
                   <input
                     ref={fileInput}
