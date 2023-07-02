@@ -7,12 +7,12 @@ import {
   Box,
   Button,
   Flex,
-  HStack,
   Tag,
   TagLabel,
   TagLeftIcon,
   Text,
 } from '@chakra-ui/react'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export type Props = {
@@ -28,6 +28,7 @@ export default function Service({
   tags = [],
   value,
 }: Props) {
+  const t = useTranslations('Home')
   const handleClickBookingButton = () => {
     const option: any = document.querySelector(`option[value="${value}"]`)
     option.parentElement.value = value
@@ -80,7 +81,7 @@ export default function Service({
                 justifySelf="flex-end"
                 alignSelf="flex-end"
               >
-                Book now
+                {t('order')}
               </Button>
             </Flex>
           </Flex>

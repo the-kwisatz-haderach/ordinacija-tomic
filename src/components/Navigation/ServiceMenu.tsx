@@ -28,7 +28,7 @@ export const ServiceMenu = () => {
           display={{ base: 'none', md: 'block' }}
           fontSize={{ base: 'xs', md: 'sm' }}
         >
-          <Text>Ordinacija Tomic</Text>
+          <Text>Ordinacija Tomić</Text>
         </Box>
         <Flex alignItems="center" gap={7} fontSize={{ base: 'xs', md: 'sm' }}>
           <Flex gap={2} alignItems="center">
@@ -54,7 +54,7 @@ export const ServiceMenu = () => {
           <Flex gap={2} alignItems="center">
             <CalendarIcon fontSize="xs" />
             <Text position="relative" bottom="1px">
-              {t('opening_hours')}: 13-20
+              {t('opening_hours')}: {t('opening_hours_time')}
             </Text>
           </Flex>
         </Flex>

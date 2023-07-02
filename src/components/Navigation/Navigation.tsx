@@ -20,6 +20,7 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { ServiceMenu } from './ServiceMenu'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   menuItems: Array<{
@@ -34,6 +35,7 @@ export default function Navigation({
   menuItems,
   logoSrc,
 }: Props): ReactElement {
+  const t = useTranslations('Home')
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
@@ -140,7 +142,7 @@ export default function Navigation({
           </DrawerBody>
           <DrawerFooter>
             <Button variant="outline" onClick={onClose}>
-              Close
+              {t('close')}
             </Button>
           </DrawerFooter>
           <DrawerCloseButton />

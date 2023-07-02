@@ -1,12 +1,6 @@
 import React from 'react'
 import { Accordion, Container, Heading, Text } from '@chakra-ui/react'
 import Service, { Props as SerivceProps } from '@components/Service/Service'
-import service1 from '../../images/5.png'
-import service2 from '../../images/6.png'
-import service3 from '../../images/7.png'
-import service4 from '../../images/8.png'
-import service5 from '../../images/9.png'
-import service6 from '../../images/10.png'
 
 type Props = {}
 
@@ -178,27 +172,6 @@ const services: SerivceProps[] = [
   },
 ]
 
-const images = [
-  {
-    url: service1,
-  },
-  {
-    url: service2,
-  },
-  {
-    url: service3,
-  },
-  {
-    url: service4,
-  },
-  {
-    url: service5,
-  },
-  {
-    url: service6,
-  },
-]
-
 export default function Services({}: Props) {
   return (
     <Container maxW="container.xl">
@@ -209,37 +182,11 @@ export default function Services({}: Props) {
         U internističkoj ordinaciji Tomić možete obaviti pregled različitih
         sustava u sklopu interne medicine.
       </Text>
-      <Accordion defaultIndex={[0]} allowMultiple>
+      <Accordion allowMultiple>
         {services.map((service, i) => (
           <Service key={i} {...service} />
         ))}
       </Accordion>
-      {/* <Flex
-        mt={16}
-        width="100%"
-        gap={10}
-        wrap="wrap"
-        justifyContent="space-evenly"
-      >
-        {images.map((img) => (
-          <Box
-            key={img.url.src}
-            position="relative"
-            overflow="hidden"
-            width="30%"
-            minH={300}
-          >
-            <Image
-              src={img.url}
-              alt="service1"
-              fill
-              style={{
-                objectFit: 'cover',
-              }}
-            />
-          </Box>
-        ))}
-      </Flex> */}
     </Container>
   )
 }

@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/layout'
-import NextLink from 'next/link'
 import {
   Center,
   Container,
@@ -9,12 +8,11 @@ import {
   Stack,
   Flex,
   Link,
-  Button,
 } from '@chakra-ui/react'
 import React from 'react'
 import logo from '@images/logo-white.svg'
 import Image from 'next/image'
-import { EmailIcon, PhoneIcon, CalendarIcon } from '@chakra-ui/icons'
+import { EmailIcon, PhoneIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
 
 const googleMapsLink = 'https://goo.gl/maps/7BBwRQmiPhCdqH527'
@@ -34,12 +32,9 @@ export default function Footer({}: Props) {
         <SimpleGrid gap={6} columns={[1, 2, 3]}>
           <Box>
             <Heading my={3} as="h5" fontSize="2xl">
-              {t('contact_us')}
+              {t('contact')}
             </Heading>
-            <Text>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam,
-              illo.
-            </Text>
+            <Text>{t('footer_text')}</Text>
             <Stack mt={6} spacing={2}>
               <Flex gap={3} alignItems="center">
                 <PhoneIcon fontSize="lg" />
@@ -58,42 +53,33 @@ export default function Footer({}: Props) {
                 </Link>
               </Flex>
               <Flex gap={3} alignItems="center">
-                <CalendarIcon fontSize="lg" />
-                {t('opening_hours')} 13-20
+                <Link
+                  href="https://www.google.com/maps/dir//Ordinacija+Tomi%C4%87+Silvija+Strahimira+Kranj%C4%8Devi%C4%87a+14+%C5%A0iroki+Brijeg+88220+Bosnia+%26+Herzegovina/@43.3878387,17.5918491,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x134b3f9acc9f37ab:0xa0adb5182564bd69!2m2!1d17.5918491!2d43.3878387?entry=ttu"
+                  isExternal
+                  color="red.500"
+                  fontSize={['md', 'lg']}
+                  h="100%"
+                >
+                  {t('view_on_map')}{' '}
+                  <ExternalLinkIcon position="relative" bottom="1px" mx="2px" />
+                </Link>
               </Flex>
             </Stack>
           </Box>
-          {/* <Box>
-            <Stack spacing={4}>
-              <Box>
-                <Heading my={3} as="h5" fontSize="2xl">
-                  {t('find_us')}
-                </Heading>
-                <Text fontSize="sm" mb={4}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Quam, illo.
-                </Text> */}
-          {/* <Button
-                  target="_blank"
-                  as={NextLink}
-                  href={googleMapsLink}
-                  size="sm"
-                  variant="outline"
-                >
-                  {t('view_on_map')}
-                </Button> */}
-          {/* <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2899.4827348286744!2d17.589274176626027!3d43.387838671115865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134b3f9acc9f37ab%3A0xa0adb5182564bd69!2sOrdinacija%20Tomi%C4%87!5e0!3m2!1sen!2sse!4v1687031249684!5m2!1sen!2sse"
-                  width="100%"
-                  height="200"
-                  // style="border:0;"
-                  // allowfullscreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                /> */}
-          {/* </Box>
-            </Stack>
-          </Box> */}
+          <Box lineHeight={1.8}>
+            <Heading my={3} as="h5" fontSize="2xl">
+              {t('opening_hours')}
+            </Heading>
+            <Text>
+              <b>Pon - Pet:</b> {t('opening_hours_time')}
+            </Text>
+            <Text>
+              <b>Sub - Ned:</b> Zatvoreno
+            </Text>
+            <Text>
+              <b>Državni praznik:</b> Zatvoreno
+            </Text>
+          </Box>
           <Center height={300} overflow="hidden">
             <Image src={logo} width={300} height={300} alt="logo" />
           </Center>

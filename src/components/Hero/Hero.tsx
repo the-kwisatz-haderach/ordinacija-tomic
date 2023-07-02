@@ -38,7 +38,7 @@ const DetailBox: React.FC<
     <Flex gap={3} h="fit-content">
       {Icon}
       <Box>
-        <Heading mt={1} mb={4} as="h4" fontSize={['xl', '3xl']}>
+        <Heading mt={1} mb={4} as="h4" fontSize={['xl', '2xl']}>
           {title}
         </Heading>
         {children}
@@ -50,7 +50,7 @@ const DetailBox: React.FC<
 export default function Hero({}: Props) {
   const t = useTranslations('Home')
   return (
-    <Container maxW={2000} p={0} mb={-50}>
+    <Container maxW={2000} p={0} mb={-100}>
       <Box
         height={560}
         width="100%"
@@ -78,7 +78,7 @@ export default function Hero({}: Props) {
             maxW="container.xl"
             position="relative"
             color="white"
-            bottom="50"
+            bottom="80px"
           >
             <Heading
               maxW={{ md: '80%' }}
@@ -87,10 +87,10 @@ export default function Hero({}: Props) {
               fontSize={['4xl', '6xl', '8xl']}
               mb={6}
             >
-              {t('hero_text')}
+              {t('hero_title')}
             </Heading>
             <Text fontSize={['xl', '2xl', '3xl']} mb={16}>
-              Vaša lokalna ambulanta u Širokom Brijegu.
+              {t('hero_subtitle')}
             </Text>
           </Container>
           <Image
@@ -104,7 +104,7 @@ export default function Hero({}: Props) {
           />
         </Box>
       </Box>
-      <Box w="100%" zIndex={2} position="relative" bottom="50">
+      <Box w="100%" zIndex={2} position="relative" bottom="100">
         <Container
           maxW="container.xl"
           display="flex"
@@ -156,20 +156,20 @@ export default function Hero({}: Props) {
               flexDir="column"
             >
               <Text fontSize={['md', 'lg']} h="100%">
-                <b>Pon - Pet:</b> 13-20
+                <b>Pon - Pet:</b> {t('opening_hours_time')}
               </Text>
               <Text fontSize={['md', 'lg']} h="100%">
-                <b>Sub - Ned:</b> Zatvori
+                <b>Sub - Ned:</b> Zatvoreno
               </Text>
               <Text fontSize={['md', 'lg']} h="100%">
-                <b>Public holidays:</b> Zatvori
+                <b>Državni praznik:</b> Zatvoreno
               </Text>
             </Box>
           </DetailBox>
           <DetailBox
             color="white"
             bg="gray.600"
-            title="Appointments"
+            title={t('appointments')}
             Icon={<CalendarIcon mr={4} fontSize={['4xl', '5xl']} />}
           >
             <Box
@@ -180,7 +180,7 @@ export default function Hero({}: Props) {
               flexDir="column"
             >
               <Text fontSize={['md', 'lg']} h="100%">
-                Fill in our form.
+                {t('fill_in_form')}.
               </Text>
               <Button
                 onClick={() => {
@@ -191,13 +191,12 @@ export default function Hero({}: Props) {
                 mt={4}
                 colorScheme="red"
               >
-                View form
+                {t('order')}
               </Button>
             </Box>
           </DetailBox>
         </Container>
       </Box>
-      {/* <BusinessDetails zIndex={2} position="relative" bottom={20} /> */}
     </Container>
   )
 }

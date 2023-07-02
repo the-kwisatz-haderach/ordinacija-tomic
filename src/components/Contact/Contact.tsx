@@ -116,12 +116,9 @@ export default function Contact({}: Props) {
         px={{ base: 4, md: 10 }}
       >
         <Heading fontSize="4xl" my={4}>
-          Stupite u kontakt s nama
+          {t('contact_us_title')}
         </Heading>
-        <Text fontSize="lg">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam animi
-          accusamus beatae ab asperiores.
-        </Text>
+        <Text fontSize="lg">{t('contact_us_subtitle')}</Text>
         <Box mt={[6, 10]} borderRadius={20}>
           <Flex
             as="form"
@@ -209,13 +206,17 @@ export default function Contact({}: Props) {
               <GridItem
                 order={4}
                 display="flex"
+                px={{ base: 4, md: 0 }}
                 alignItems="center"
-                justifyContent="center"
+                justifyContent={{ md: 'center' }}
               >
                 <RadioGroup defaultValue="telefon">
-                  <Stack spacing={5} direction="row">
+                  <Stack
+                    spacing={[2, 4]}
+                    direction={['column', 'column', 'row']}
+                  >
                     <Text fontSize={['sm', 'md']} fontWeight="bold">
-                      Zelim da kontaktiraje da:
+                      {t('preferred_way_of_contact')}:
                     </Text>
                     <Radio value="telefon">Telefon</Radio>
                     <Radio value="email">Email</Radio>

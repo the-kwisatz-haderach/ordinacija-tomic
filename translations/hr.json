@@ -10,11 +10,22 @@
     "lastname": "Prezime",
     "email": "Email",
     "phone": "Telefon",
-    "view_on_map": "Get directions",
+    "view_on_map": "Posjetite nas",
+    "appointments": "Rezervirajte pregled",
+    "fill_in_form": "Ispunite naš formular",
     "find_us": "Find us",
-    "contact_us": "Naručite se",
-    "phone_number": "063 818-020",
+    "contact_us": "Kontaktirajte nas",
+    "order": "Naručite se",
+    "contact_us_title": "Stupite u kontakt s nama",
+    "contact_us_subtitle": "Ispunite formular i kontaktirat ćemo vas u najbržem roku. ",
+    "preferred_way_of_contact": "Želim da me kontaktirate na",
+    "footer_text": "Javite nam se preko telefona ili emaila.",
+    "contact": "Kontakt",
+    "opening_hours_time": "09-17",
+    "close": "Zatvori",
+    "phone_number": "+387 63 818 020",
     "email_address": "monika.tomic@gmail.com",
-    "hero_text": "Dobrodošli u odrinaciju tomic"
+    "hero_title": "Ordinacija Tomić",
+    "hero_subtitle": "Internistička ordinacija interne medicine u Širokom Brijegu"
   }
 }

@@ -54,7 +54,7 @@ export default function BusinessDetails() {
         </Flex>
         <Flex gap={2} alignItems="center">
           <CalendarIcon fontSize="lg" />
-          {t('opening_hours')} 13-20
+          {t('opening_hours')} {t('opening_hours_time')}
         </Flex>
       </Stack>
     </DetailBox>
