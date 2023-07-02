@@ -5,6 +5,10 @@ import { NextIntlProvider } from 'next-intl'
 import { extendTheme, ChakraProvider } from '@chakra-ui/react'
 
 const theme = extendTheme({
+  fonts: {
+    heading: `'Nunito', sans-serif`,
+    body: `'Nunito', sans-serif`,
+  },
   colors: {
     brand: {
       100: '#f6f6f6',
