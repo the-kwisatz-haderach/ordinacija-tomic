@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Flex, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import aboutUsImg from '../../images/about-us.png'
 

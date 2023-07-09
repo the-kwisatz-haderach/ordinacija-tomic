@@ -27,6 +27,8 @@
     "email_address": "ordinacijatomic.sb@gmail.com",
     "hero_title": "Ordinacija Tomić",
     "hero_subtitle": "Internistička ordinacija u Širokom Brijegu",
-    "services": "Usluge"
+    "services": "Usluge",
+    "next": "Sljedeći",
+    "previous": "Prethodan"
   }
 }
