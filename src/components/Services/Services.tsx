@@ -1,6 +1,7 @@
 import React from 'react'
 import { Accordion, Container, Heading, Text } from '@chakra-ui/react'
 import Service, { Props as SerivceProps } from '@components/Service/Service'
+import { useTranslations } from 'next-intl'
 
 type Props = {}
 
@@ -168,19 +169,32 @@ const services: SerivceProps[] = [
   {
     title: 'Ostale usluge',
     value: '7',
-    Content: () => <p>Obrada hipertenzije, Holter krvnog tlaka</p>,
+    Content: () => <p>Pregled fizijatra</p>,
   },
 ]
 
 export default function Services({}: Props) {
+  const t = useTranslations('Home')
   return (
     <Container maxW="container.xl">
       <Heading size="2xl" mt={10} mb={8}>
-        Usluge
+        {t('services')}
       </Heading>
-      <Text fontSize="lg" mb={10}>
-        U internističkoj ordinaciji Tomić možete obaviti pregled različitih
-        sustava u sklopu interne medicine.
+      <Text fontSize="lg" mb={6}>
+        Internistički pregled podrazumijeva kompletan pregled prilikom kojeg
+        liječnik specijalist interne medicine kroz razgovor s pacijentom uzima
+        detaljne podatke koji uključuju prijašnje bolesti, bolesti u obitelji
+        kao i trenutne tegobe pacijenta.
+      </Text>
+      <Text fontSize="lg" mb={6}>
+        Po završenom razgovoru i pregledu s EKG-om, Ultrazvukom trbuha,a u
+        dogovoru s pacijentom liječnik će odlučiti o daljnjim potrebnim
+        pretragama ili pregledima. Točna dijagnoza na temelju dobivenih
+        podataka, pretpostavka je za uspješno liječenje pacijenta.
+      </Text>
+      <Text fontSize="lg" mb={6}>
+        Internistički pregled je potreban kod pojave zdravstvenih tegoba, kao
+        sistematski (preventivni) pregled ili u sklopu predoperativne obrade.
       </Text>
       <Accordion allowMultiple>
         {services.map((service, i) => (

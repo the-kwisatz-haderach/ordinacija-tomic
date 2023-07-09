@@ -33,27 +33,17 @@ export const ServiceMenu = () => {
         <Flex alignItems="center" gap={7} fontSize={{ base: 'xs', md: 'sm' }}>
           <Flex gap={2} alignItems="center">
             <PhoneIcon fontSize="xs" />
-            <Link
-              position="relative"
-              bottom="1px"
-              href={`tel:${t('phone_number')}`}
-            >
-              {t('phone_number')}
-            </Link>
+            <Link href={`tel:${t('phone_number')}`}>{t('phone_number')}</Link>
           </Flex>
           <Flex gap={2} alignItems="center">
             <EmailIcon fontSize="xs" />
-            <Link
-              position="relative"
-              bottom="1px"
-              href={`mailto:${t('email_address')}`}
-            >
+            <Link href={`mailto:${t('email_address')}`}>
               {t('email_address')}
             </Link>
           </Flex>
           <Flex gap={2} alignItems="center">
             <CalendarIcon fontSize="xs" />
-            <Text position="relative" bottom="1px">
+            <Text>
               {t('opening_hours')}: {t('opening_hours_time')}
             </Text>
           </Flex>

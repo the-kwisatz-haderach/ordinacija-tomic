@@ -1,7 +1,6 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { Box, Container } from '@chakra-ui/layout'
 import { BoxProps, Button, Flex, Heading, Link, Text } from '@chakra-ui/react'
-import BusinessDetails from '@components/BusinessDetails/BusinessDetails'
 import Image from 'next/image'
 import heroImg from '../../images/hero_1.png'
 import {
@@ -11,6 +10,7 @@ import {
   TimeIcon,
 } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
+import styles from './Hero.module.css'
 
 type Props = {}
 
@@ -56,6 +56,7 @@ export default function Hero({}: Props) {
         width="100%"
         pos="relative"
         display="flex"
+        maxH={[400, 'unset']}
         _before={{
           content: '""',
           position: 'absolute',
@@ -63,7 +64,7 @@ export default function Hero({}: Props) {
           width: '100%',
           height: '100%',
           zIndex: 1,
-          bgImage: 'linear-gradient(to right, #0000005a, transparent)',
+          bgImage: 'linear-gradient(to top, #0000005a, transparent)',
         }}
       >
         <Box
@@ -71,6 +72,7 @@ export default function Hero({}: Props) {
           pos="relative"
           width="100%"
           height="inherit"
+          maxH={[400, 'unset']}
           alignItems="flex-end"
         >
           <Container
@@ -78,18 +80,21 @@ export default function Hero({}: Props) {
             maxW="container.xl"
             position="relative"
             color="white"
+            mb={{ base: 12, md: 0 }}
             bottom="80px"
           >
             <Heading
-              maxW={{ md: '80%' }}
+              maxW={{ md: '90%' }}
               as="h1"
+              pos="relative"
+              left={-1}
               lineHeight={1}
-              fontSize={['4xl', '6xl', '8xl']}
+              fontSize={['4xl', '6xl', '7xl', '8xl']}
               mb={6}
             >
               {t('hero_title')}
             </Heading>
-            <Text fontSize={['xl', '2xl', '3xl']} mb={16}>
+            <Text fontSize={['xl', '3xl', '4xl', '5xl']} mb={16}>
               {t('hero_subtitle')}
             </Text>
           </Container>
@@ -99,6 +104,7 @@ export default function Hero({}: Props) {
             priority
             style={{
               objectFit: 'cover',
+              objectPosition: '90% center',
             }}
             src={heroImg}
           />
