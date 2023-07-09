@@ -6,6 +6,7 @@ import pic4 from '../../images/8.png'
 import pic5 from '../../images/9.png'
 import pic6 from '../../images/10.png'
 import Image from 'next/image'
+import { Box } from '@chakra-ui/react'
 
 const images = [
   { src: pic1, id: 0 },
@@ -18,20 +19,22 @@ const images = [
 
 export const Pictures = () => {
   return (
-    <Carousel
-      items={images}
-      renderItem={({ item, isSnapPoint }) => (
-        <CarouselItem key={item.id} isSnapPoint={isSnapPoint}>
-          <Image
-            src={item.src.src}
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: '100%', height: 'auto', maxHeight: 500 }}
-            alt=""
-          />
-        </CarouselItem>
-      )}
-    />
+    <Box mt={-20}>
+      <Carousel
+        items={images}
+        renderItem={({ item, isSnapPoint }) => (
+          <CarouselItem key={item.id} isSnapPoint={isSnapPoint}>
+            <Image
+              src={item.src.src}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: '100%', height: 'auto', maxHeight: 500 }}
+              alt=""
+            />
+          </CarouselItem>
+        )}
+      />
+    </Box>
   )
 }
