@@ -4,12 +4,12 @@ import React, { CSSProperties } from 'react'
 import { useSnapCarousel } from 'react-snap-carousel'
 
 const styles = {
-  root: {},
   scroll: {
     position: 'relative',
     display: 'flex',
     overflow: 'auto',
     scrollSnapType: 'x mandatory',
+    gap: '1rem',
   },
   itemSnapPoint: {
     scrollSnapAlign: 'start',
@@ -44,6 +44,7 @@ export const Carousel = <T extends any>({
   items,
   renderItem,
 }: CarouselProps<T>) => {
+  const t = useTranslations('Home')
   const {
     scrollRef,
     pages,
@@ -53,9 +54,8 @@ export const Carousel = <T extends any>({
     goTo,
     snapPointIndexes,
   } = useSnapCarousel()
-  const t = useTranslations('Home')
   return (
-    <div style={styles.root}>
+    <div>
       <ul style={styles.scroll} ref={scrollRef}>
         {items.map((item, i) =>
           renderItem({

@@ -23,13 +23,17 @@ export const Pictures = () => {
       <Carousel
         items={images}
         renderItem={({ item, isSnapPoint }) => (
-          <CarouselItem key={item.id} isSnapPoint={isSnapPoint}>
+          <CarouselItem key={item.id} isSnapPoint>
             <Image
-              src={item.src.src}
+              src={item.src}
               width={0}
               height={0}
               sizes="100vw"
-              style={{ width: '100%', height: 'auto', maxHeight: 500 }}
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: 500,
+              }}
               alt=""
             />
           </CarouselItem>
