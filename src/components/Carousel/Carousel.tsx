@@ -1,7 +1,8 @@
-import { Box, Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, Key } from 'react'
 import { useSnapCarousel } from 'react-snap-carousel'
+import type { CarouselItemProps } from './CarouselItem'
 
 const styles = {
   scroll: {
@@ -10,9 +11,6 @@ const styles = {
     overflow: 'auto',
     scrollSnapType: 'x mandatory',
     gap: '1rem',
-  },
-  itemSnapPoint: {
-    scrollSnapAlign: 'start',
   },
   controls: {
     display: 'flex',
@@ -40,7 +38,7 @@ interface CarouselRenderItemProps<T> {
   readonly isSnapPoint: boolean
 }
 
-export const Carousel = <T extends any>({
+const Carousel = <T extends { id: Key; src: string }>({
   items,
   renderItem,
 }: CarouselProps<T>) => {
@@ -53,7 +51,10 @@ export const Carousel = <T extends any>({
     next,
     goTo,
     snapPointIndexes,
-  } = useSnapCarousel()
+  } = useSnapCarousel({
+    axis: 'x',
+  })
+
   return (
     <div>
       <ul style={styles.scroll} ref={scrollRef}>
@@ -64,7 +65,7 @@ export const Carousel = <T extends any>({
           })
         )}
       </ul>
-      <div style={styles.controls} aria-hidden>
+      <div key={pages.length} style={styles.controls} aria-hidden>
         <ButtonGroup isAttached mt={4}>
           <Button
             size={['xs', 'sm', 'md', 'lg']}
@@ -102,18 +103,4 @@ export const Carousel = <T extends any>({
   )
 }
 
-interface CarouselItemProps {
-  readonly isSnapPoint: boolean
-  readonly children?: React.ReactNode
-}
-
-export const CarouselItem = ({ isSnapPoint, children }: CarouselItemProps) => (
-  <Box
-    flexShrink={0}
-    style={{
-      ...(isSnapPoint ? styles.itemSnapPoint : {}),
-    }}
-  >
-    {children}
-  </Box>
-)
+export default Carousel

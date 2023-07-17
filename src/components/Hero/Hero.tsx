@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react'
 import { Box, Container } from '@chakra-ui/layout'
 import { BoxProps, Button, Flex, Heading, Link, Text } from '@chakra-ui/react'
 import Image from 'next/image'
-import heroImg from '../../images/hero_1.png'
+import heroImg from '../../images/tomic_front.png'
 import {
   CalendarIcon,
   ChatIcon,
@@ -10,7 +10,6 @@ import {
   TimeIcon,
 } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
-import styles from './Hero.module.css'
 
 type Props = {}
 
