@@ -29,6 +29,10 @@
     "hero_subtitle": "Internistička ordinacija u Širokom Brijegu",
     "services": "Usluge",
     "next": "Sljedeći",
-    "previous": "Prethodan"
+    "previous": "Prethodan",
+    "contact_toast_success_title": "Success!",
+    "contact_toast_success": "Success!",
+    "contact_toast_failure_title": "Ouch!",
+    "contact_toast_failure": "Ouch!"
   }
 }

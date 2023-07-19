@@ -21,10 +21,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { PhoneIcon, AttachmentIcon, EmailIcon } from '@chakra-ui/icons'
 import { useTranslations } from 'next-intl'
 
-type Props = {}
-
-// Fields: Type of service + How contact
-
 const serviceOptions = [
   { value: '1', label: 'Kardiološki pregled' },
   { value: '2', label: 'Nefrološki pregled' },
@@ -35,7 +31,7 @@ const serviceOptions = [
   { value: '7', label: 'Ostale usluge' },
 ]
 
-export default function Contact({}: Props) {
+export default function Contact() {
   const t = useTranslations('Home')
   const fileInput = useRef<HTMLInputElement>(null)
   const [files, setFiles] = useState<string[]>([])
@@ -46,44 +42,62 @@ export default function Contact({}: Props) {
       const form = e.currentTarget
       const url = new URL(form.action)
       const formData = new FormData(form)
+      formData.set(
+        'service',
+        serviceOptions.find(
+          (option) => option.value === e.target?.elements.service.value
+        )?.label || ''
+      )
 
       const fetchOptions = {
         method: form.method,
         body: formData,
       }
 
-      console.log(url)
+      if (form.method.toLowerCase() === 'post') {
+        if (form.enctype === 'multipart/form-data') {
+          fetchOptions.body = formData
+        }
+      }
 
-      // if (form.method.toLowerCase() === 'post') {
-      //   if (form.enctype === 'multipart/form-data') {
-      //     fetchOptions.body = formData
-      //   }
-      // }
-
-      // const body = {
-      //   firstname: e.target?.elements.firstname.value,
-      //   lastname: e.target?.elements.lastname.value,
-      //   email: e.target?.elements.email.value,
-      //   phone: e.target?.elements.phone.value,
-      // }
-      // if (Object.values(body).some((value) => !value)) {
-      //   return
-      // }
+      const body = {
+        firstname: e.target?.elements.firstname.value,
+        lastname: e.target?.elements.lastname.value,
+        email: e.target?.elements.email.value,
+        phone: e.target?.elements.phone.value,
+        preferred_way_of_contact:
+          e.target?.elements.preferred_way_of_contact.value,
+        service:
+          serviceOptions.find(
+            (option) => option.value === e.target?.elements.service.value
+          )?.label || '',
+      }
+      if (Object.values(body).some((value) => !value)) {
+        return
+      }
       return fetch(url.pathname, fetchOptions).then((res) => {
         if (res.ok) {
-          // e.target.reset()
+          e.target.reset()
+          setFiles([])
           toast({
-            title: 'Form submitted',
-            description:
-              'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, pariatur.',
+            title: t('contact_toast_success_title'),
+            description: t('contact_toast_success'),
             status: 'success',
+            isClosable: true,
+            position: 'top',
+          })
+        } else {
+          toast({
+            title: t('contact_toast_failure_title'),
+            description: t('contact_toast_failure'),
+            status: 'error',
             isClosable: true,
             position: 'top',
           })
         }
       })
     },
-    [toast]
+    [t, toast]
   )
 
   useEffect(() => {
@@ -194,7 +208,12 @@ export default function Contact({}: Props) {
               </GridItem>
               <GridItem pl={2} order={4}>
                 <Stack spacing={3}>
-                  <Select variant="filled" placeholder="Usluge" size="md">
+                  <Select
+                    name="service"
+                    variant="filled"
+                    placeholder="Usluge"
+                    size="md"
+                  >
                     {serviceOptions.map((option) => (
                       <option key={option.value} value={option.value}>
                         {option.label}
@@ -210,7 +229,10 @@ export default function Contact({}: Props) {
                 alignItems="center"
                 justifyContent={{ md: 'center' }}
               >
-                <RadioGroup defaultValue="telefon">
+                <RadioGroup
+                  name="preferred_way_of_contact"
+                  defaultValue="telefon"
+                >
                   <Stack
                     spacing={[2, 4]}
                     direction={['column', 'column', 'row']}
@@ -230,7 +252,7 @@ export default function Contact({}: Props) {
                     style={{ display: 'none' }}
                     type="file"
                     name="file"
-                    accept="image/png, image/jpeg"
+                    accept="image/png, image/jpeg, application/pdf"
                     multiple
                   />
                   <Button

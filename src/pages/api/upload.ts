@@ -8,6 +8,30 @@ export const config = {
   },
 }
 
+const translations: Record<string, string> = {
+  firstname: 'Ime',
+  email: 'Email',
+  lastname: 'Prezime',
+  phone: 'Telefon',
+  service: 'Usluge',
+  preferred_way_of_contact: 'Želim da me kontaktirate na',
+}
+
+const formatMessage = (fields: {
+  firstname: string
+  lastname: string
+  email: string
+  phone: string
+  service: string
+  preferred_way_of_contact: string
+}): string => {
+  return Object.entries(fields).reduce(
+    (acc, [key, value]) =>
+      acc + `<b>${translations[key] || ''}:</b> ${value}<br />`,
+    ''
+  )
+}
+
 const parseFiles = (
   req: NextApiRequest
 ): Promise<{
@@ -15,7 +39,10 @@ const parseFiles = (
   files: formidable.Files
 }> =>
   new Promise((resolve, reject) => {
-    const form = formidable({ multiples: true })
+    const form = formidable({
+      multiples: true,
+      maxFiles: 3,
+    })
     form.parse(req, (err, fields, files) => {
       if (err) {
         return reject(err)
@@ -38,9 +65,10 @@ export default async function handler(
           : [parsed.files.file]
 
         await sendEmail({
-          subject: 'Yo',
-          text: JSON.stringify(parsed.fields),
+          subject: 'Message received',
+          html: formatMessage(parsed.fields as any),
           attachments: files.map((file) => ({
+            filename: file.originalFilename || file.newFilename,
             path: file.filepath,
           })),
         })
