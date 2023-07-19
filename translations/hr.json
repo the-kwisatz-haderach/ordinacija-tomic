@@ -30,9 +30,9 @@
     "services": "Usluge",
     "next": "Sljedeći",
     "previous": "Prethodan",
-    "contact_toast_success_title": "Success!",
-    "contact_toast_success": "Success!",
-    "contact_toast_failure_title": "Ouch!",
-    "contact_toast_failure": "Ouch!"
+    "contact_toast_success_title": "Formular uspješno poslan",
+    "contact_toast_success": "Kontaktirat ćemo Vas u kratkom roku",
+    "contact_toast_failure_title": "Pogreška",
+    "contact_toast_failure": "Došlo je do pogreške, pokušajte ponovno"
   }
 }

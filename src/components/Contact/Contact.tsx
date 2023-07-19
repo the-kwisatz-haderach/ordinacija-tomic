@@ -85,6 +85,7 @@ export default function Contact() {
             status: 'success',
             isClosable: true,
             position: 'top',
+            duration: 7000,
           })
         } else {
           toast({
@@ -93,6 +94,7 @@ export default function Contact() {
             status: 'error',
             isClosable: true,
             position: 'top',
+            duration: 5000,
           })
         }
       })
