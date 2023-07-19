@@ -48,6 +48,8 @@ export default function BusinessDetails() {
             position="relative"
             bottom="1px"
             href={`mailto:${t('email_address')}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {t('email_address')}
           </Link>

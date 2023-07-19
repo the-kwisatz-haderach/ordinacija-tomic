@@ -48,6 +48,8 @@ export default function Footer({}: Props) {
                   position="relative"
                   bottom="1px"
                   href="mailto:test@test.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {t('email_address')}
                 </Link>

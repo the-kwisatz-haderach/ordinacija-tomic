@@ -37,7 +37,11 @@ export const ServiceMenu = () => {
           </Flex>
           <Flex gap={2} alignItems="center">
             <EmailIcon fontSize="xs" />
-            <Link href={`mailto:${t('email_address')}`}>
+            <Link
+              href={`mailto:${t('email_address')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {t('email_address')}
             </Link>
           </Flex>
