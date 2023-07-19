@@ -66,7 +66,7 @@ const Carousel = <T extends { id: Key; src: string }>({
         )}
       </ul>
       <div key={pages.length} style={styles.controls} aria-hidden>
-        <ButtonGroup isAttached mt={4}>
+        <ButtonGroup key={pages.length} isAttached mt={4}>
           <Button
             size={['xs', 'sm', 'md', 'lg']}
             variant="outline"
@@ -79,7 +79,7 @@ const Carousel = <T extends { id: Key; src: string }>({
           {pages.map((_, i) => (
             <Button
               size={['xs', 'sm', 'md', 'lg']}
-              key={i}
+              key={`${pages.length}${i}`}
               variant={activePageIndex === i ? 'solid' : 'outline'}
               onClick={() => goTo(i)}
             >
