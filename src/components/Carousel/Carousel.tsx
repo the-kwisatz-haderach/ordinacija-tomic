@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'
-import React, { CSSProperties, Key } from 'react'
+import React, { CSSProperties, Fragment, Key, useEffect, useState } from 'react'
 import { useSnapCarousel } from 'react-snap-carousel'
 import type { CarouselItemProps } from './CarouselItem'
 
@@ -53,6 +53,7 @@ const Carousel = <T extends { id: Key; src: string }>({
     snapPointIndexes,
   } = useSnapCarousel({
     axis: 'x',
+    initialPages: [[0], [1], [2], [3], [4], [5], [6]],
   })
 
   return (
@@ -65,10 +66,9 @@ const Carousel = <T extends { id: Key; src: string }>({
           })
         )}
       </ul>
-      <div key={pages.length} style={styles.controls} aria-hidden>
-        <ButtonGroup key={pages.length} isAttached mt={4}>
+      <div style={styles.controls} aria-hidden>
+        <ButtonGroup isAttached mt={4}>
           <Button
-            key={pages.length}
             size={['xs', 'sm', 'md', 'lg']}
             variant="outline"
             opacity={activePageIndex <= 0 ? 0.5 : 1}
@@ -80,7 +80,7 @@ const Carousel = <T extends { id: Key; src: string }>({
           {pages.map((_, i) => (
             <Button
               size={['xs', 'sm', 'md', 'lg']}
-              key={`${pages.length}${i}`}
+              key={i}
               variant={activePageIndex === i ? 'solid' : 'outline'}
               onClick={() => goTo(i)}
             >
@@ -88,7 +88,6 @@ const Carousel = <T extends { id: Key; src: string }>({
             </Button>
           ))}
           <Button
-            key={pages.length}
             size={['xs', 'sm', 'md', 'lg']}
             variant="outline"
             opacity={activePageIndex === pages.length - 1 ? 0.5 : 1}

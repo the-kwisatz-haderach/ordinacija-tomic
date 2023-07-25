@@ -5,7 +5,6 @@ import pic4 from '../../images/slike_4.webp'
 import pic5 from '../../images/slike_5.webp'
 import pic6 from '../../images/waiting_room.webp'
 import pic7 from '../../images/reception_large.webp'
-import Image from 'next/image'
 import { Box } from '@chakra-ui/react'
 import Carousel from '@components/Carousel/Carousel'
 import CarouselItem from '@components/Carousel/CarouselItem'
@@ -26,13 +25,17 @@ export const Pictures = () => {
       <Carousel
         items={images}
         renderItem={({ item, isSnapPoint }) => (
-          <CarouselItem key={item.id} isSnapPoint={isSnapPoint}>
-            <Image
+          <CarouselItem
+            key={`${item.id}${isSnapPoint}`}
+            isSnapPoint={isSnapPoint}
+          >
+            <img
               src={item.src}
               width={0}
               height={0}
               sizes="100vw"
               style={{
+                maxWidth: '100vw',
                 width: '100%',
                 height: 'auto',
                 maxHeight: 500,
