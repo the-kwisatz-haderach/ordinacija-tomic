@@ -68,6 +68,7 @@ const Carousel = <T extends { id: Key; src: string }>({
       <div key={pages.length} style={styles.controls} aria-hidden>
         <ButtonGroup key={pages.length} isAttached mt={4}>
           <Button
+            key={pages.length}
             size={['xs', 'sm', 'md', 'lg']}
             variant="outline"
             opacity={activePageIndex <= 0 ? 0.5 : 1}
@@ -87,6 +88,7 @@ const Carousel = <T extends { id: Key; src: string }>({
             </Button>
           ))}
           <Button
+            key={pages.length}
             size={['xs', 'sm', 'md', 'lg']}
             variant="outline"
             opacity={activePageIndex === pages.length - 1 ? 0.5 : 1}

@@ -13,6 +13,7 @@ const styles = {
 
 const CarouselItem = ({ isSnapPoint, children }: CarouselItemProps) => (
   <Box
+    key={`${isSnapPoint}`}
     flexShrink={0}
     style={{
       ...(isSnapPoint ? styles.itemSnapPoint : {}),
